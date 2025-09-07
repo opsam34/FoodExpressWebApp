@@ -1,0 +1,204 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Kobo:wght@400;600;800&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Kobo', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #181631 0%, #231462 100%);
+    color: #ffe080;
+}
+
+
+
+
+
+
+
+/* Navigation Styles */
+nav {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 30px rgba(153, 41, 234, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(204, 102, 218, 0.3);
+}
+
+.Logo {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'Kobo', sans-serif;
+    text-decoration: none;
+    background: linear-gradient(45deg, #9929EA, #CC66DA, #FAEB92);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(153, 41, 234, 0.5);
+    transition: all 0.3s ease;
+}
+
+.Logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(204, 102, 218, 0.6));
+}
+
+.nav-Links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-Links a {
+    text-decoration: none;
+    color: #FAEB92;
+    font-weight: 600;
+    font-family: 'Kobo', sans-serif;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.nav-Links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #9929EA, #CC66DA);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.nav-Links a:hover {
+    color: white;
+    border-color: #CC66DA;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(204, 102, 218, 0.4);
+}
+
+.nav-Links a:hover::before {
+    left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Checkout Container */
+.checkout-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(40, 24, 72, 0.9);
+    border-radius: 12px;
+    border: 1px solid rgba(204, 102, 218, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Title */
+.checkout-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #faeb92;
+}
+
+/* Labels */
+.checkout-container label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #cc66da;
+}
+
+/* Inputs */
+.checkout-container textarea,
+.checkout-container select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(204, 102, 218, 0.4);
+    background: rgba(153, 41, 234, 0.1);
+    color: #faeb92;
+    font-size: 1rem;
+    font-family: 'Kobo', sans-serif;
+}
+
+.checkout-container textarea:focus,
+.checkout-container select:focus {
+    outline: none;
+    border-color: #faeb92;
+    box-shadow: 0 0 10px rgba(250, 235, 146, 0.5);
+}
+
+/* Button */
+.place-order-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #faeb92, #9929ea);
+    color: #181631;
+    transition: all 0.3s ease;
+}
+
+.place-order-btn:hover {
+    background: linear-gradient(135deg, #cc66da, #faeb92);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 102, 218, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .checkout-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .checkout-container h1 {
+        font-size: 1.6rem;
+    }
+}
+.checkout-container select option {
+    background: #181631;
+    color: #faeb92;
+    padding: 10px;
+}
+
+.checkout-container select option:hover {
+    background: #cc66da;
+    color: #181631;
+}
+

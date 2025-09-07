@@ -1,0 +1,505 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kobo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #9929EA 35%, #CC66DA 70%, #FAEB92 100%);
+    min-height: 100vh;
+    color: #333;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Add animated background particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(153, 41, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(204, 102, 218, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(250, 235, 146, 0.08) 0%, transparent 50%);
+    z-index: -1;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+/* Registration Form Container */
+.registration-container {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 3rem 2.5rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(153, 41, 234, 0.3);
+    border: 2px solid rgba(153, 41, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced glow effect for form container */
+.registration-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(153, 41, 234, 0.1), rgba(204, 102, 218, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s;
+    z-index: -1;
+}
+
+.registration-container:hover::before {
+    transform: translateX(100%);
+}
+
+/* Header Styling */
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #FFFFFF, #F0F0F0, #E0E0E0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    font-family: 'Kobo', sans-serif;
+    letter-spacing: -1px;
+    position: relative;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) 
+            drop-shadow(0 0 40px rgba(240, 240, 240, 0.6));
+}
+
+@keyframes titleGlow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) 
+                drop-shadow(0 0 40px rgba(240, 240, 240, 0.6));
+    }
+    100% {
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1)) 
+                drop-shadow(0 0 60px rgba(240, 240, 240, 0.8));
+    }
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(45deg, #FFFFFF, #E0E0E0);
+    border-radius: 2px;
+}
+
+/* Form Styling */
+form {
+    position: relative;
+    z-index: 2;
+}
+
+/* Label Styling */
+label {
+    display: block;
+    color: #FAEB92;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Kobo', sans-serif;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Input Field Styling */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    font-family: 'Kobo', sans-serif;
+    border: 2px solid rgba(153, 41, 234, 0.4);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FAEB92;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #CC66DA;
+    box-shadow: 0 5px 25px rgba(204, 102, 218, 0.4);
+    transform: translateY(-2px);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Placeholder Styling */
+input::placeholder,
+textarea::placeholder {
+    color: rgba(250, 235, 146, 0.5);
+    font-style: italic;
+}
+
+/* Textarea Specific Styling */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: 'Kobo', sans-serif;
+}
+
+/* Select Dropdown Styling */
+select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23FAEB92' viewBox='0 0 16 16'%3e%3cpath d='M8 11L3 6h10l-5 5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 3rem;
+}
+
+select option {
+    background: rgba(0, 0, 0, 0.9);
+    color: #FAEB92;
+    font-family: 'Kobo', sans-serif;
+    padding: 0.5rem;
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Kobo', sans-serif;
+    background: linear-gradient(135deg, #9929EA 0%, #CC66DA 100%);
+    color: #FAEB92;
+    border: 2px solid rgba(250, 235, 146, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(153, 41, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #CC66DA 0%, #FAEB92 100%);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(153, 41, 234, 0.6);
+    border-color: #FAEB92;
+    color: #000;
+}
+
+button[type="submit"]:hover::before {
+    left: 0;
+}
+
+button[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+/* Login Link Styling */
+p {
+    text-align: center;
+    margin-top: 2rem;
+    color: #FAEB92;
+    font-family: 'Kobo', sans-serif;
+    font-size: 1rem;
+}
+
+p a {
+    color: #CC66DA;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+}
+
+p a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #CC66DA, #FAEB92);
+    transition: width 0.3s ease;
+}
+
+p a:hover {
+    color: #FAEB92;
+    background: rgba(204, 102, 218, 0.1);
+    transform: translateY(-1px);
+}
+
+p a:hover::before {
+    width: 100%;
+}
+
+/* Field Focus Animation */
+input[type="text"]:focus + label,
+input[type="password"]:focus + label,
+input[type="email"]:focus + label,
+textarea:focus + label,
+select:focus + label {
+    color: #CC66DA;
+    transform: translateY(-2px);
+}
+
+/* Add floating label effect */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.floating-label {
+    position: absolute;
+    top: 0.9rem;
+    left: 1.2rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0 0.5rem;
+    color: rgba(250, 235, 146, 0.6);
+    font-size: 0.9rem;
+    font-family: 'Kobo', sans-serif;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+.form-group input:focus + .floating-label,
+.form-group input:not(:placeholder-shown) + .floating-label,
+.form-group textarea:focus + .floating-label,
+.form-group textarea:not(:placeholder-shown) + .floating-label,
+.form-group select:focus + .floating-label,
+.form-group select:not([value=""]) + .floating-label {
+    top: -0.7rem;
+    font-size: 0.8rem;
+    color: #CC66DA;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* Error message styling */
+.error-message {
+    color: #FF6B6B;
+    font-size: 0.9rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #FF6B6B;
+    font-family: 'Kobo', sans-serif;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Success message styling */
+.success-message {
+    color: #4ECDC4;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(78, 205, 196, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #4ECDC4;
+    font-family: 'Kobo', sans-serif;
+}
+
+/* Add sparkle effects on hover */
+.registration-container:hover::after {
+    content: '✨';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    animation: sparkle 1s ease-in-out;
+    z-index: 3;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    
+    .registration-container {
+        padding: 2rem 1.5rem;
+        margin: 1rem 0;
+        border-radius: 20px;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 0.8rem 1rem;
+        margin-bottom: 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    button[type="submit"] {
+        padding: 0.9rem 1.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-container {
+        padding: 1.5rem 1rem;
+        margin: 0.5rem 0;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.9rem;
+    }
+    
+    label {
+        font-size: 0.9rem;
+    }
+}
+
+/* Input validation states */
+input:valid {
+    border-color: rgba(78, 205, 196, 0.6);
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-color: rgba(255, 107, 107, 0.6);
+}
+
+/* Add subtle hover effects for form fields */
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+    border-color: rgba(204, 102, 218, 0.6);
+    box-shadow: 0 3px 15px rgba(204, 102, 218, 0.2);
+}
+
+/* Loading state for submit button */
+button[type="submit"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+button[type="submit"]:disabled:hover {
+    transform: none;
+    box-shadow: 0 5px 20px rgba(153, 41, 234, 0.4);
+}
+
+/* Form field icons */
+.form-group {
+    position: relative;
+}
+
+.form-group::before {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: rgba(204, 102, 218, 0.6);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Specific icons for different field types */
+.form-group.name::before { content: '👤'; }
+.form-group.username::before { content: '🔤'; }
+.form-group.password::before { content: '🔒'; }
+.form-group.email::before { content: '📧'; }
+.form-group.phone::before { content: '📱'; }
+.form-group.address::before { content: '🏠'; }
+.form-group.role::before { content: '👔'; }
+
+/* Adjust padding for inputs with icons */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding-right: 3rem;
+}
