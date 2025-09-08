@@ -24,28 +24,21 @@ FoodExpressWebApp/
 │       └── java/
 │           └── com/
 │               └── opsam/
+│                   ├── Launch.java
 │                   ├── models/          # Data Models
-│                   │   ├── Cart.java
-│                   │   ├── CartItem.java
-│                   │   ├── Menu.java
-│                   │   ├── Orders.java
-│                   │   ├── OrdersItem.java
-│                   │   ├── Restaurant.java
-│                   │   └── User.java
+│                   ├── Dao/             # Data Access Object
+│                   ├── DaoImpl/         # Data Access Object Implimentation 
 │                   ├── servlets/        # Servlet Controllers
-│                   │   ├── CartServlet.java
-│                   │   ├── CheckoutServlet.java
-│                   │   └── GetAllMenuByRestId.java
-│                   └── util/           # Utility Classes
-│                       ├── DBConnection.java
-│                       └── Launch.java
+│                   │   └──              #All Servlet Classes Should be Here
+│                   └── util/            # Utility Classes
+│                       └──  DBConnection.java
+│                     
 └── webapp/
     ├── css/                           # Stylesheets
     ├── images/                        # Static Images
     │   ├── menu/
     │   └── restaurants/
     ├── META-INF/
-    │   └── MANIFEST.MF
     ├── WEB-INF/
     └── JSP Pages:
         ├── cart.jsp
